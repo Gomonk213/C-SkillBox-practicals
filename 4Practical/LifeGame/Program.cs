@@ -36,7 +36,8 @@ namespace LifeGame
                 }
                 Console.WriteLine("______________________________________________________");
                 Console.SetCursorPosition(0, Console.WindowTop);
-                
+                Console.CursorVisible = false;
+
                 int[,] calc=new int[cell.GetLength(0),cell.GetLength(1)];
                 
                 for (int i = 0; i < cell.GetLength(0); i++)//Проверка соседей на жизнь
