@@ -12,7 +12,7 @@ namespace LifeGame
         {
             int buf;
             Random rand = new Random();
-            bool[,] cell = new bool[20,50];
+            bool[,] cell = new bool[50,50];
             for(int i = 0;i<cell.GetLength(0);i++) //Генерация поля
             {
                 for (int j = 0; j < cell.GetLength(1); j++)
@@ -24,7 +24,6 @@ namespace LifeGame
             Console.SetCursorPosition(0, Console.WindowTop);
             while (true)
             {
-                Console.WriteLine("______________________________________________________");
                 for (int i = 0; i < cell.GetLength(0); i++) //Вывод поля на экран
                 {
                     for (int j = 0; j < cell.GetLength(1); j++)
@@ -34,7 +33,6 @@ namespace LifeGame
 
                     }
                 }
-                Console.WriteLine("______________________________________________________");
                 Console.SetCursorPosition(0, Console.WindowTop);
                 Console.CursorVisible = false;
 
