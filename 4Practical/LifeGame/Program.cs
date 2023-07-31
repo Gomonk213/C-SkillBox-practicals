@@ -24,6 +24,7 @@ namespace LifeGame
             Console.SetCursorPosition(0, Console.WindowTop);
             while (true)
             {
+                Console.WriteLine("______________________________________________________");
                 for (int i = 0; i < cell.GetLength(0); i++) //Вывод поля на экран
                 {
                     for (int j = 0; j < cell.GetLength(1); j++)
@@ -33,34 +34,37 @@ namespace LifeGame
 
                     }
                 }
+                Console.WriteLine("______________________________________________________");
                 Console.SetCursorPosition(0, Console.WindowTop);
-                int calc;
-                for (int i = 0; i < cell.GetLength(0); i++)//Процесс жизни
+                
+                int[,] calc=new int[cell.GetLength(0),cell.GetLength(1)];
+                
+                for (int i = 0; i < cell.GetLength(0); i++)//Проверка соседей на жизнь
                 {
                     for (int j = 0;j < cell.GetLength(1); j++)
                     {
-                        calc = 0;
+                        calc[i,j] = 0;
                         if(i==0)//первая строка
                         {
                             if (j == 0)//первый столбец
                             {
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i + 1, j + 1]) calc++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j + 1]) calc[i, j]++;
                             }
                             else if (j != cell.GetLength(1) - 1)//промежуточные столбцы
                             {
-                                if (cell[i + 1, j - 1]) calc++;
-                                if (cell[i + 1, j + 1]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i, j - 1]) calc++;
+                                if (cell[i + 1, j - 1]) calc[i, j]++;
+                                if (cell[i + 1, j + 1]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
                             }
-                            else//последний столбец
+                            else if (j == cell.GetLength(1) - 1)//последний столбец
                             {
-                                if (cell[i + 1, j - 1]) calc++;
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i, j - 1]) calc++;
+                                if (cell[i + 1, j - 1]) calc[i, j]++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
                             }
                         }
                         else if(i!= cell.GetLength(0)-1) //промежуточные строки
@@ -68,64 +72,65 @@ namespace LifeGame
                             if (j == 0)//первый столбец
                             {
 
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i - 1, j + 1]) calc++;
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i + 1, j + 1]) calc++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i - 1, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j + 1]) calc[i, j]++;
                             }
                             else if (j != cell.GetLength(1) - 1)//промежуточные столбцы
                             {
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i, j - 1]) calc++;
-                                if (cell[i - 1, j - 1]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i + 1, j +1]) calc++;
-                                if (cell[i - 1, j + 1]) calc++;
-                                if (cell[i + 1, j - 1]) calc++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
+                                if (cell[i - 1, j - 1]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i + 1, j +1]) calc[i, j]++;
+                                if (cell[i - 1, j + 1]) calc[i, j]++;
+                                if (cell[i + 1, j - 1]) calc[i, j]++;
                             }
-                            else//последний столбец
+                            else if(j == cell.GetLength(1) - 1)//последний столбец
                             {
 
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i + 1, j]) calc++;
-                                if (cell[i, j - 1]) calc++;
-                                if (cell[i + 1, j - 1]) calc++;
-                                if (cell[i - 1, j - 1]) calc++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i + 1, j]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
+                                if (cell[i + 1, j - 1]) calc[i, j]++;
+                                if (cell[i - 1, j - 1]) calc[i, j]++;
                             }
                         }
-                        else//последняя строка
+                        else if (i== cell.GetLength(0) - 1)//последняя строка
                         {
                             if (j == 0)//первый столбец
                             {
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i - 1, j + 1]) calc++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i - 1, j + 1]) calc[i, j]++;
                             }
                             else if (j != cell.GetLength(1) - 1)//промежуточные столбцы
                             {
-                                if (cell[i - 1, j - 1]) calc++;
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i - 1, j + 1]) calc++;
-                                if (cell[i, j + 1]) calc++;
-                                if (cell[i, j - 1]) calc++;
+                                if (cell[i - 1, j - 1]) calc[i, j]++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i - 1, j + 1]) calc[i, j]++;
+                                if (cell[i, j + 1]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
                             }
-                            else//последний столбец
+                            else if (j == cell.GetLength(1) - 1)//последний столбец
                             {
-                                if (cell[i - 1, j]) calc++;
-                                if (cell[i, j - 1]) calc++;
-                                if (cell[i - 1, j - 1]) calc++;
+                                if (cell[i - 1, j]) calc[i, j]++;
+                                if (cell[i, j - 1]) calc[i, j]++;
+                                if (cell[i - 1, j - 1]) calc[i, j]++;
                             }
                         }
-                        if (cell[i,j]==false && calc==3)//три живых вокруг мёртвой
-                        {
-                            cell[i,j] = true;
-                        }
-                        if (cell[i,j]==true && (calc<2 | calc>3))//меньше 2 или больше 3 вокруг живой клетки
-                        {
-                            cell[i, j] = false;
-                        }
+                        
+                    }
+                }
+                for (int i = 0; i < cell.GetLength(0); i++) //Процесс жизни
+                {
+                    for (int j = 0; j < cell.GetLength(1); j++)
+                    {
+                        if (!cell[i,j] && calc[i, j] == 3) { cell[i, j] = true; }
+                        if (cell[i,j] && (calc[i, j] < 2 || calc[i, j] > 3)) { cell[i, j] = false; }
                     }
                 }
                 System.Threading.Thread.Sleep(100);
