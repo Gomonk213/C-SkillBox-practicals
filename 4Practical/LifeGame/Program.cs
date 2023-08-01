@@ -12,7 +12,7 @@ namespace LifeGame
         {
             int buf;
             Random rand = new Random();
-            bool[,] cell = new bool[50,50];
+            bool[,] cell = new bool[20,80];
             for(int i = 0;i<cell.GetLength(0);i++) //Генерация поля
             {
                 for (int j = 0; j < cell.GetLength(1); j++)
