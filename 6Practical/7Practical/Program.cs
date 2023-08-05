@@ -8,10 +8,6 @@ namespace _7Practical
 {
     internal class Program
     {
-        static void ShowAllWorkers(Repository workers)
-        {
-
-        }
         static void OpenMenu()
         {
             Console.WriteLine("Выберите желаемую операцию:\n1. Вывод всех работников на экран\n2. Вывод работника под введённым id");
@@ -23,7 +19,7 @@ namespace _7Practical
             int choice,id;
             Repository db;
             DateTime date1, date2;
-            Console.WriteLine("Введите путь к используемому файлу (Пример: .\\Info\\Data.txt)");
+            Console.WriteLine("Введите путь к используемому файлу (Пример: Info\\Data.txt или Data.txt)");
             string path=Console.ReadLine();
             db=new Repository(path);
             while (true)
@@ -33,12 +29,12 @@ namespace _7Practical
                 switch (choice)
                 {
                     case 1:
-                        ShowAllWorkers(db);
+                        db.PrintWorkers();
                         break;
                     case 2:
                         Console.WriteLine("Введите id нужного работника");
                         id = int.Parse(Console.ReadLine());
-                        //buf = GetWorkerById(id);
+                        buf = db.GetWorkerById(id);
                         break;
                     case 3:
 

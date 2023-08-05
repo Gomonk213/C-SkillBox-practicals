@@ -45,10 +45,23 @@ namespace _7Practical
             this.placeBirth = PlaceBirth;
             this.addingTime = AddingTime;
         }
-
-        public void Print()
+        /// <summary>
+        /// Конструктор для несуществующих рабочих
+        /// </summary>
+        /// <param name="Id"></param>
+        public Worker(int Id)
         {
-            Console.WriteLine($"{this.id,3} {this.addingTime.ToString("dd-MM-yyyy HH:mm")} {this.fullName,30} {this.age,2} {this.height,3} {this.dateBirth.ToString("dd-MM-yyyy")} {this.placeBirth,15}");
+            this.id = Id;
+            this.fullName = "";
+            this.age = 0;
+            this.height = 0;
+            this.dateBirth = DateTime.Now;
+            this.placeBirth = "";
+            this.addingTime = DateTime.Now;
+        }
+        public string Print()
+        {
+            return ($"{this.id,3} {this.addingTime.ToString("dd-MM-yyyy HH:mm")} {this.fullName,30} {this.age,2} {this.height,3} {this.dateBirth.ToString("dd-MM-yyyy")} {this.placeBirth,15}");
         }
     }
 }
