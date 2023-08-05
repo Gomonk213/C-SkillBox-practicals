@@ -10,6 +10,8 @@ namespace _7Practical
     {
         #region Свойства
         public int Id {  get { return this.id; } set { this.id = value; } }
+
+        public DateTime AddingTime { get { return this.addingTime; } set { this.addingTime = value; } }
         public string FullName { get { return this.fullName; } set { this.fullName = value; } }
         public int Age { get { return this.age; } set { this.age = value; } }
         public int Height { get { return this.height; } set { this.height = value; } }
@@ -61,7 +63,7 @@ namespace _7Practical
         }
         public string Print()
         {
-            return ($"{this.id,3} {this.addingTime.ToString("dd-MM-yyyy HH:mm")} {this.fullName,30} {this.age,2} {this.height,3} {this.dateBirth.ToString("dd-MM-yyyy")} {this.placeBirth,15}");
+            return ($"{this.id,2}|{this.addingTime.ToString("dd-MM-yyyy HH:mm"),21}|{this.fullName,28}|{this.age,7}|{this.height,4}|{this.dateBirth.ToString("dd-MM-yyyy"),13}|{this.placeBirth,14}");
         }
     }
 }

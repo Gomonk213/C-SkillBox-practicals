@@ -14,13 +14,19 @@ namespace _7Practical
         public Worker[] Workers
         {
             get { return workers; }
+            set { workers = value; }
         }
+        public string Fpath 
+            {
+                get{return this.fpath;}
+            }
         private Worker[] workers;
         private int index; // Последний записанный id работника
-        // fullPath = @".\Info\Data.txt"
+        private string fpath; // Путь текущего файла
         public Repository(string path)
         {
             index = 0;
+            this.fpath = ".\\" + path;
             workers = new Worker[1];
             GetAllWorkersFromFile(".\\" + path);
         }
@@ -53,6 +59,8 @@ namespace _7Practical
                     sw.Close();
                     break;
                 }
+                if (int.Parse(record[0]) == 0)
+                    continue;
                 Resize(index >= workers.Length);
                 workers[index] = new Worker(int.Parse(record[0]),
                                            Convert.ToDateTime(record[1]),
@@ -69,17 +77,19 @@ namespace _7Practical
         /// Функция, синхронизирующая локальный репозиторий с файлом
         /// </summary>
         /// <param name="path">Путь к файлу</param>
-        private void CopyRepoToFile(string path)
+        public void CopyRepoToFile(string path)
         {
             StreamWriter sw = new StreamWriter(path,false);
             foreach(Worker worker in workers)
             {
-                sw.WriteLine(worker.Print());
+                sw.WriteLine(worker.Print().Replace('|','#'));
             }
+            sw.Close();
         }
         public void PrintWorkers()
         {
-            for(int i = 0; i<index;i++)
+            Console.WriteLine("ID|Время создания записи|            Ф.И.О           |Возраст|Рост|Дата рождения|Место рождения");
+            for (int i = 0; i<index;i++)
             {
                 Console.WriteLine(workers[i].Print());
             }
@@ -96,7 +106,7 @@ namespace _7Practical
         {
             if(flag)
             {
-                Array.Resize(ref workers, workers.Length*2);
+                Array.Resize(ref workers, workers.Length+1);
             }
         }
         /// <summary>
@@ -111,6 +121,46 @@ namespace _7Practical
             if (workers[i].Id == id) { return workers[i]; }
             Console.WriteLine("Работник с таким ID не найден в репозитории");
             return new Worker(-1);
+        }
+        public void AddWorker()
+        {
+            int Id = index + 2;
+            DateTime dateAdding = DateTime.Now;
+            Console.WriteLine("Введите ФИО");
+            string name = Console.ReadLine();
+            Console.WriteLine("Введите возраст");
+            int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите рост");
+            int height = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите дату рождения");
+            DateTime dateBirth = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Введите место рождения");
+            string placeBirth = Console.ReadLine();
+            Resize(index >= workers.Length);
+            workers[index]= new Worker(Id, dateAdding,name,age,height, dateBirth, placeBirth);
+            index++;
+            CopyRepoToFile(fpath);//синхронизация файла и репозитория
+            Console.WriteLine("Запись успешно добавлена");
+        }
+        public void DeleteWorker(int id)
+        {
+            StreamWriter sw = new StreamWriter(fpath, false);
+            foreach (Worker worker in workers)
+            {
+                if(worker.Id != id)
+                    sw.WriteLine(worker.Print().Replace('|', '#'));
+            }
+            sw.Close();
+            this = new Repository(fpath);
+        }
+        public void PrintWorkersBetweenDates(DateTime from, DateTime to)
+        {
+            Console.WriteLine("ID|Время создания записи|            Ф.И.О           |Возраст|Рост|Дата рождения|Место рождения");
+            foreach (Worker worker in workers )
+            {
+                if(worker.AddingTime>from && worker.AddingTime<to)
+                    Console.WriteLine(worker.Print());
+            }
         }
     }
 }
