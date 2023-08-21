@@ -1,0 +1,42 @@
+﻿<Window x:Class="_9Practical.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_9Practical"
+        mc:Ignorable="d"
+        Title="Практическая №9" Height="450" Width="800">
+    <Grid>
+        <Button Content="Разделить на слова" 
+                HorizontalAlignment="Left" 
+                Margin="84,347,0,0" 
+                VerticalAlignment="Top" 
+                Height="52" 
+                Width="154" 
+                Click="SplitOnWords"/>
+        <TextBox x:Name="FirstTaskString" HorizontalAlignment="Left" 
+                 Margin="61,285,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top"
+                 Width="200" Height="40"/>
+        <Button Content="Перевернуть предложение" 
+            HorizontalAlignment="Left" 
+            Margin="498,347,0,0" 
+            VerticalAlignment="Top" 
+            Height="52" 
+            Width="163" 
+            Click="ReverseSentence"/>
+        <TextBox x:Name="SecondTaskString" HorizontalAlignment="Left" 
+            Margin="474,282,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top"
+            Width="212" Height="43"/>
+        <ListBox x:Name="Result1" Margin="61,29,539,172"/>
+        <Label  x:Name="Result2"
+                Margin="417,192,57,172"
+                Background="#FFF3CECE"
+                
+        />
+
+    </Grid>
+</Window>

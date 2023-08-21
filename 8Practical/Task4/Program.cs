@@ -25,7 +25,7 @@ namespace Task4
             XElement flatPhone = new XElement("FlatPhone", "8 (495) 818-22-35");
             phones.Add(mobilePhone,flatPhone);
             person.Add(address,phones);
-            Stream stream = new FileStream("Person.xml", FileMode.OpenOrCreate,FileAccess.Write);
+            Stream stream = new FileStream("Person.xml", FileMode.OpenOrCreate,FileAccess.Write); 
             person.Save(stream);
             stream.Close();
         }
