@@ -17,8 +17,9 @@ namespace _10Practical
         public string TypeOfEditing { get; set; }
         public string Editor { get; set; }
 
+        public string ForAssistant { get; } = "******";
 
-        
+
         static Random rand = new Random();
         static List<string> dbPassport=new List<string>();
         
