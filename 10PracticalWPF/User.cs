@@ -45,7 +45,7 @@ namespace _10Practical
             {
                 phoneNumber="7915"+Convert.ToString(rand.Next(1000000,10000000));
             }
-            if(passport==String.Empty || dbPassport.Contains(passport))
+            if(passport==String.Empty)
             {
                 passport = "4516" + Convert.ToString((rand.Next(100000,1000000)));
             }

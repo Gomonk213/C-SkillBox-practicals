@@ -21,23 +21,33 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="User" Margin="10,221,696,144"  Text="Пользователь" Width="150" Height="24" SelectionChanged="User_SelectionChanged"/>
-        <Grid x:Name="Manager" Visibility="Visible" Margin="185,234,14,2">
-            <TextBox 
-                     Margin="499,15,0,0" TextWrapping="Wrap"
-                     Text="Данные для изменения" FontSize="15" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170"/>
-            <Button Content="Изменить имя" HorizontalAlignment="Left" Margin="23,18,0,0" VerticalAlignment="Top" Height="33" Width="86" Click="ChangeName"/>
-            <Button Content="Изменить фамилию" HorizontalAlignment="Left" Margin="123,18,0,0" VerticalAlignment="Top"  Height="33" Width="124" Click="ChangeSurname"/>
-            <Button Content="Изменить телефон" HorizontalAlignment="Left" Margin="262,18,0,0" VerticalAlignment="Top" Height="33" Width="107" Click="ChangePhone"/>
-            <Button Content="Изменить паспорт" HorizontalAlignment="Left" Margin="382,18,0,0"  VerticalAlignment="Top" Height="33" Width="105" Click="ChangePassport"/>
-            <TextBox x:Name="NewName" HorizontalAlignment="Left" Margin="20,85,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="96" Height="40"/>
-            <TextBox x:Name="NewSurname" HorizontalAlignment="Left" Margin="134,86,437,0" TextWrapping="Wrap" Text="Введите фамилию" VerticalAlignment="Top" Width="110" Height="40"/>
-            <TextBox x:Name="NewPhoneNumber" HorizontalAlignment="Left" Margin="268,85,0,0" TextWrapping="Wrap" Text="Введите номер телефона" VerticalAlignment="Top" Width="102" Height="40"/>
-            <TextBox x:Name="NewPassport" HorizontalAlignment="Left" Margin="390,85,0,0" TextWrapping="Wrap" Text="Введите серию и номер паспорта" VerticalAlignment="Top" Width="96" Height="40"/>
-            <Button Content="Создать новую запись" HorizontalAlignment="Left" Margin="522,85,0,0" VerticalAlignment="Top" Height="42" Width="140" Click="AddNewRecord"/>
+        <ComboBox x:Name="User" Margin="10,221,696,144"  Text="Пользователь" Width="150"
+                  Height="24" SelectionChanged="User_SelectionChanged"/>
+        <Grid x:Name="Manager" Visibility="Hidden" Margin="185,234,14,2">
+            <TextBox x:Name="NewInfo" Margin="499,15,0,0" TextWrapping="Wrap" 
+                     Text="Данные для изменения" FontSize="15" Height="39" 
+                     VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+            <Button Content="Изменить имя" HorizontalAlignment="Left" Margin="23,18,0,0"
+                    VerticalAlignment="Top" Height="33" Width="86" Click="ChangeName"/>
+            <Button Content="Изменить фамилию" HorizontalAlignment="Left" Margin="123,18,0,0"
+                    VerticalAlignment="Top"  Height="33" Width="124" Click="ChangeSurname"/>
+            <Button Content="Изменить телефон" HorizontalAlignment="Left" Margin="262,18,0,0"
+                    VerticalAlignment="Top" Height="33" Width="107" Click="ChangePhone"/>
+            <Button Content="Изменить паспорт" HorizontalAlignment="Left" Margin="382,18,0,0"  
+                    VerticalAlignment="Top" Height="33" Width="105" Click="ChangePassport"/>
+            <TextBox x:Name="NewName" HorizontalAlignment="Left" Margin="20,85,0,0" TextWrapping="Wrap"
+                     Text="Введите имя" VerticalAlignment="Top" Width="96" Height="40"/>
+            <TextBox x:Name="NewSurname" HorizontalAlignment="Left" Margin="134,86,0,0" TextWrapping="Wrap"
+                     Text="Введите фамилию" VerticalAlignment="Top" Width="117" Height="40" />
+            <TextBox x:Name="NewPhoneNumber" HorizontalAlignment="Left" Margin="268,85,0,0" TextWrapping="Wrap"
+                     Text="Введите номер телефона" VerticalAlignment="Top" Width="102" Height="40" />
+            <TextBox x:Name="NewPassport" HorizontalAlignment="Left" Margin="390,85,0,0" TextWrapping="Wrap"
+                     Text="Введите серию и номер паспорта" VerticalAlignment="Top" Width="96" Height="40"/>
+            <Button Content="Создать новую запись" HorizontalAlignment="Left" Margin="522,85,0,0" 
+                    VerticalAlignment="Top" Height="42" Width="140" Click="AddNewRecord"/>
 
         </Grid>
-        <ListView x:Name="List" Margin="22,10,8,195" >
+        <ListView x:Name="List" Visibility="Hidden" Margin="22,10,8,195" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}" Width="100"/>
@@ -52,10 +62,13 @@
             </ListView.View>
         </ListView>
         <Grid x:Name="Assistant" Visibility="Hidden" Margin="165,34,10,10">
-            <TextBox HorizontalAlignment="Center" Height="32" 
-                     Margin="0,322,0,0" TextWrapping="Wrap" 
+            <TextBox x:Name="AssistantData" HorizontalAlignment="Center" Height="32" 
+                     Margin="0,312,0,0" TextWrapping="Wrap" 
                      Text="Введите изменяемые данные" FontSize="20" 
                      VerticalAlignment="Top" Width="392"/>
+            <Button Content="Изменить номер телефона" FontSize="20" 
+                    HorizontalAlignment="Left" Margin="179,227,0,0" VerticalAlignment="Top"
+                    Width="325" Height="52" Click="AssistantChangePhone"/>
         </Grid>
     </Grid>
 </Window>
