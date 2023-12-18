@@ -80,5 +80,19 @@ namespace _10Practical
                 this.Editor
                 ) ;
         }
+        public class SortByName : IComparer<User>
+        {
+            public int Compare(User x, User y)
+            {
+                return String.Compare(x.Name, y.Name);
+            }
+        }
+        public class SortBySurname : IComparer<User>
+        {
+            public int Compare(User x,User y)
+            {
+                return String.Compare(x.Surname, y.Surname);
+            }
+        }
     }
 }

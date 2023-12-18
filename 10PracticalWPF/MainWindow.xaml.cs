@@ -208,6 +208,17 @@ namespace _10PracticalWPF
                 List.Items.Refresh();
             }
         }
-        
+
+        private void SortName(object sender, RoutedEventArgs e)
+        {
+            users.Sort(new User.SortByName());
+            List.Items.Refresh();
+        }
+
+        private void SortSurname(object sender, RoutedEventArgs e)
+        {
+            users.Sort(new User.SortBySurname());
+            List.Items.Refresh();
+        }
     }
 }

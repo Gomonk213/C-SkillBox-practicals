@@ -70,5 +70,7 @@
                     HorizontalAlignment="Left" Margin="179,227,0,0" VerticalAlignment="Top"
                     Width="325" Height="52" Click="AssistantChangePhone"/>
         </Grid>
+        <Button Content="Сортировать по имени" HorizontalAlignment="Left" Margin="22,279,0,0" VerticalAlignment="Top" Width="151" Height="32" Click="SortName"/>
+        <Button Content="Сортировать по фамилии" HorizontalAlignment="Left" Margin="21,328,0,0" VerticalAlignment="Top" Width="151" Height="32" Click="SortSurname"/>
     </Grid>
 </Window>
